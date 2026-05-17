@@ -8,7 +8,7 @@ import ActiveLink from "../activeLink/ActiveLink";
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
-        <nav className="sticky top-0 z-40 w-full border-b border-slate-200 bg-background/70 backdrop-blur-lg">
+        <nav className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/60 backdrop-blur-lg">
             <header className="lg:container mx-auto flex  items-center justify-between px-6 py-2">
                 <div className="flex items-center gap-4">
                     <button
