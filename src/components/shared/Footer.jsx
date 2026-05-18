@@ -1,16 +1,15 @@
 import Image from 'next/image';
 import React from 'react';
 import Logo from '../../../public/assests/logo.png';
-import ActiveLink from '../activeLink/ActiveLink';
 import Link from 'next/link';
 
 const Footer = () => {
     return (
         <div className='bg-[#0F172B]'>
             <div className='lg:container mx-auto px-6 py-12 text-white space-y-8'>
-                <div className='text-center md:text-left grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
+                <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
                     <div className='space-y-4'>
-                        <div className='flex items-center gap-1 justify-center md:justify-start'>
+                        <div className='flex items-center gap-1'>
                             <Image src={Logo} alt="Logo" width={40} height={40} />
                             <h2 className='font-bold'>MediQueue</h2>
                         </div>

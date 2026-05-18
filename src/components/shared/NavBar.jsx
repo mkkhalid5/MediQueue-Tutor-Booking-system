@@ -1,6 +1,5 @@
 'use client';
 import { useState } from "react";
-import { Link, Button } from "@heroui/react"
 import Image from "next/image";
 import Logo from "../../../public/assests/logo.png";
 import ActiveLink from "../activeLink/ActiveLink";
