@@ -4,8 +4,23 @@ import { Link, Button } from "@heroui/react"
 import Image from "next/image";
 import Logo from "../../../public/assests/logo.png";
 import ActiveLink from "../activeLink/ActiveLink";
+import { authClient } from "@/lib/auth-client";
+import LoadingState from "../loading/LoadingState";
+import { redirect } from "next/navigation";
 
 const NavBar = () => {
+    const {
+        data: session,
+        isPending
+    } = authClient.useSession();
+
+    const isUser = session?.user;
+
+    const handleLogout = () => {
+        authClient.signOut();
+        redirect("/");
+    }
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <nav className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/60 backdrop-blur-lg">
@@ -51,49 +66,80 @@ const NavBar = () => {
                         <ActiveLink href={"/"}>Home</ActiveLink>
                     </li>
                     <li>
-                        <ActiveLink href={"/tutors"}>Tutors</ActiveLink>
+                        {!isUser ? (
+                            <ActiveLink href={`/auth/login?callbackUrl=%2Ftutors`}>Tutors</ActiveLink>
+                        ) : <ActiveLink href={"/tutors"}>Tutors</ActiveLink>}
+                        
                     </li>
                     <li>
-                        <ActiveLink href={"/add-tutors"}>Add Tutors</ActiveLink>
+                        {!isUser ? (
+                            <ActiveLink href={`/auth/login?callbackUrl=%2Fadd-tutors`}>Add Tutors</ActiveLink>
+                        ) : <ActiveLink href={"/add-tutors"}>Add Tutors</ActiveLink>}
                     </li>
                     <li>
-                        <ActiveLink href={"/my-tutors"}>My Tutors</ActiveLink>
+                        {!isUser ? (
+                            <ActiveLink href={`/auth/login?callbackUrl=%2Fmy-tutors`}>My Tutors</ActiveLink>
+                        ) : <ActiveLink href={"/my-tutors"}>My Tutors</ActiveLink>}
                     </li>
                     <li>
-                        <ActiveLink href={"/my-booked-sessions"}>My Booked Sessions</ActiveLink>
+                        {!isUser ? (
+                            <ActiveLink href={`/auth/login?callbackUrl=%2Fmy-booked-sessions`}>My Booked Sessions</ActiveLink>
+                        ) : <ActiveLink href={"/my-booked-sessions"}>My Booked Sessions</ActiveLink>}
                     </li>
                 </ul>
                 <div className="flex items-center gap-4">
-                    <ActiveLink href="/myprofile"><Image src={Logo} alt="user" width={40} height={40} className="rounded-full" /></ActiveLink>
-                    <div className="hidden items-center gap-4 md:flex">
-                        <ActiveLink href={"/auth/login"}>Login</ActiveLink>
-                        <ActiveLink href={"/auth/signup"}>Sign Up</ActiveLink>
-                    </div>
+                    {
+                        isPending ? (
+                            <LoadingState />
+                        ) :
+                            isUser ? (
+                                <div className=" items-center gap-4 flex">
+                                    <ActiveLink href="/myprofile">
+                                        <Image src={Logo} alt="user" width={40} height={40} className="rounded-full" />
+                                    </ActiveLink>
+                                    <button onClick={handleLogout} className="hidden text-sm font-medium text-primary hover:text-primary-hover">Logout</button>
+                                </div>
+                            ) : (
+                                <div className="hidden items-center gap-4 md:flex">
+                                    <ActiveLink href={"/auth/login"}>Login</ActiveLink>
+                                    <ActiveLink href={"/auth/signup"}>Sign Up</ActiveLink>
+                                </div>
+                            )}
                 </div>
             </header>
             {isMenuOpen && (
                 <div className="border-t border-separator lg:hidden">
                     <ul className="flex flex-col gap-2 p-4">
                         <li>
-                            <ActiveLink href={"/"}>Home</ActiveLink>
+                           <ActiveLink href={"/"}>Home</ActiveLink>
                         </li>
                         <li>
-                            <ActiveLink href={"/tutors"}>Tutors</ActiveLink>
+                            {!isUser ? (
+                                <ActiveLink href={`/auth/login?callbackUrl=%2Ftutors`}>Tutors</ActiveLink>
+                            ) : <ActiveLink href={"/tutors"}>Tutors</ActiveLink>}
                         </li>
                         <li>
-                            <ActiveLink href={"/add-tutors"}>Add Tutors</ActiveLink>
+                            {!isUser ? (
+                                <ActiveLink href={`/auth/login?callbackUrl=%2Fadd-tutors`}>Add Tutors</ActiveLink>
+                            ) : <ActiveLink href={"/add-tutors"}>Add Tutors</ActiveLink>}
                         </li>
                         <li>
-                            <ActiveLink href={"/my-tutors"}>My Tutors</ActiveLink>
+                            {!isUser ? (
+                                <ActiveLink href={`/auth/login?callbackUrl=%2Fmy-tutors`}>My Tutors</ActiveLink>
+                            ) : <ActiveLink href={"/my-tutors"}>My Tutors</ActiveLink>}
                         </li>
                         <li>
-                            <ActiveLink href={"/my-booked-sessions"}>My Booked Sessions</ActiveLink>
+                            {!isUser ? (
+                                <ActiveLink href={`/auth/login?callbackUrl=%2Fmy-booked-sessions`}>My Booked Sessions</ActiveLink>
+                            ) : <ActiveLink href={"/my-booked-sessions"}>My Booked Sessions</ActiveLink>}
                         </li>
                     </ul>
-                    <div className="md:hidden items-center gap-4 flex">
-                        <ActiveLink href={"/auth/login"}>Login</ActiveLink>
-                        <ActiveLink href={"/auth/signup"}>Sign Up</ActiveLink>
-                    </div>
+                    {!isUser ? (
+                        <div className="md:hidden items-center gap-4 flex">
+                            <ActiveLink href={"/auth/login"}>Login</ActiveLink>
+                            <ActiveLink href={"/auth/signup"}>Sign Up</ActiveLink>
+                        </div>
+                    ) : <button onClick={handleLogout} className="md:hidden text-sm font-medium text-primary hover:text-primary-hover">Logout</button>}
                 </div>
             )}
         </nav>

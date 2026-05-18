@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+//https://images.openai.com/static-rsc-4/rvRUN3AwOqtBNKJ53a3R7I5Zs4eParktP3qezLX-RX5vuNEi4o_HpFAaFauU4jdAc8ObyMpo4QeDUzoVupWEcP2b4AVzvT0UBknnJPiZSqVbouX1VurHYUCQ9GIj9EXqIDp6e26neIzkIh4nbEtNi6vvKdqeZb4Dv6_iVXm6OKKyG0rAuhS2r_eIsm2uSOwg?purpose=fullsize
+
 First, run the development server:
 
 ```bash

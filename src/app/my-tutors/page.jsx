@@ -5,8 +5,8 @@ export const metadata = {
 
 const MyTutorsPage = () => {
     return (
-        <div>
-            This is the My Tutors page.
+        <div className="">
+            
         </div>
     );
 };

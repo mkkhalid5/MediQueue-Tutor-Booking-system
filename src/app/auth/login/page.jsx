@@ -1,3 +1,5 @@
+import Login from "@/components/login/Login";
+
 export const metadata = {
   title: "MediQueue - Login",
   description: "Log in to your MediQueue account to access your profile and manage your tutoring sessions.",
@@ -6,7 +8,7 @@ export const metadata = {
 const LoginPage = () => {
     return (
         <div>
-            this is the Login page.
+            <Login />
         </div>
     );
 };
