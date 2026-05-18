@@ -1,31 +1,67 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, ListBox, TextField, Select, Calendar, DatePicker, DateField } from '@heroui/react';
-import {getLocalTimeZone, today} from "@internationalized/date";
-import { redirect } from 'next/navigation';
-import {DateValue} from "@internationalized/date";
-import {useState} from "react";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { use, useState } from "react";
 
 const AddTutors = () => {
     const [value, setValue] = useState(null);
     const currentDate = today(getLocalTimeZone());
     const isInvalid = value != null && value.compare(currentDate) < 0;
-    
+
+    const { data: session } = authClient.useSession();
+    const user = session?.user;
+    console.log(user);
 
     const handleAddTutor = async (e) => {
+
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const userData = Object.fromEntries(formData.entries());
-        console.log("data", userData);
+        const tutorData = Object.fromEntries(formData.entries());
+        const { name,image, subject, available, fee, slot,sessionDate, experience, location, mode } = tutorData;
+        console.log("data", tutorData);
 
+        console.log(user);
+        const newTutorData = {
+            userId: user?.id,
+            userEmail: user?.email,
+            userName: user?.name,
+            tutorName:name,
+            image,
+            subject,
+            available,
+            fee,
+            slot,
+            sessionDate,
+            experience,
+            location,
+            mode,
+        }
 
-        // console.log("newUser", data);
-        // console.log("error", error);
-        // if (data) {
-        //     redirect('/')
-        // }
-        // if (error) {
-        //     alert(`status: ${error.status} statusText: ${error.statusText}`)
-        // }
+        try {
+
+            const res = await fetch('http://localhost:5000/tutors', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newTutorData)
+            });
+            const data = await res.json();
+            console.log(data);
+            if (res.ok) {
+                alert("Tutor added successfully");
+                window.location.reload();
+            }
+            else {
+                alert("Failed to add tutor");
+            }
+
+        }
+        catch (error) {
+            console.log(error);
+            alert("Something went wrong");
+        }
     }
 
 

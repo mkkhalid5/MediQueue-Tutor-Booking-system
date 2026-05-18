@@ -96,7 +96,7 @@ const NavBar = () => {
                                     <ActiveLink href="/myprofile">
                                         <Image alt="" height={40}  width={40} className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-300" src={isUser?.image || "https://source.unsplash.com/40x40/?portrait?1"} />
                                     </ActiveLink>
-                                    <button onClick={handleLogout} className="hidden text-sm font-medium text-primary hover:text-primary-hover">Logout</button>
+                                    <button onClick={handleLogout} className="text-sm font-medium text-primary hover:text-primary-hover">Logout</button>
                                 </div>
                             ) : (
                                 <div className="hidden items-center gap-4 md:flex">
