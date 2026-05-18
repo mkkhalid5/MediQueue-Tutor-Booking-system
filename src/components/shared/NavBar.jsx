@@ -95,7 +95,7 @@ const NavBar = () => {
                             isUser ? (
                                 <div className=" items-center gap-4 flex">
                                     <ActiveLink href="/myprofile">
-                                        <Image src={Logo} alt="user" width={40} height={40} className="rounded-full" />
+                                        <Image alt="" height={40}  width={40} className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-300" src={isUser?.image || "https://source.unsplash.com/40x40/?portrait?1"} />
                                     </ActiveLink>
                                     <button onClick={handleLogout} className="hidden text-sm font-medium text-primary hover:text-primary-hover">Logout</button>
                                 </div>
