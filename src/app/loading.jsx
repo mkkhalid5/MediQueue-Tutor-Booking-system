@@ -1,6 +1,6 @@
 const Loading = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-100">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-cyan-100">
       <div className="flex flex-col items-center">
         <div className="relative w-24 h-24">
           <div className="absolute inset-0 rounded-full border-4 border-cyan-200"></div>
