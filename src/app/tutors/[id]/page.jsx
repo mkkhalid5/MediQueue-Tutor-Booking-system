@@ -1,4 +1,5 @@
-import TutorCard from '@/components/tutor-card/TutorCard';
+
+import BookTutor from '@/components/modal/bookTutor/BookTutor';
 import { getTutorById } from '@/lib/tutors';
 import { Button } from '@heroui/react';
 import Image from 'next/image';
@@ -11,6 +12,11 @@ import { LuUser } from 'react-icons/lu';
 import { MdCalendarMonth, MdOutlineMailOutline } from 'react-icons/md';
 import { PiBuildingOfficeBold } from 'react-icons/pi';
 import { TbDeviceDesktop } from 'react-icons/tb';
+
+export const metadata = {
+    title: 'MediQueue - Tutor Details',
+    description: 'Detailed information about the tutor, including subject, experience, and contact details.',
+};
 
 const TutorDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -33,6 +39,10 @@ const TutorDetailsPage = async ({ params }) => {
                     <p className='flex items-center gap-2 text-slate-500'><MdCalendarMonth /> Session Start Date: {tutor?.sessionDate}</p>
                     <p className='flex items-center gap-2 text-slate-500'><CiLocationOn /> Location: {tutor?.location}</p>
                     <p className='flex items-center gap-2 text-slate-500'><TbDeviceDesktop /> Teaching Mode: <span className='text-lg px-2 rounded-full bg-purple-200 text-purple-500 w-max'>{tutor?.mode}</span></p>
+                </div>
+                <div className=' border p-4 shadow-lg rounded-md'>
+
+                    <BookTutor tutor={tutor}></BookTutor>
                 </div>
             </div>
 
@@ -103,6 +113,7 @@ const TutorDetailsPage = async ({ params }) => {
                         <p className='font-bold'>{tutor?.sessionDate}</p>
                 </div>
             </div>
+
 
         </div>
     );

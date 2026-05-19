@@ -6,7 +6,7 @@ import React from 'react';
 const TutorCard = ({ tutor }) => {
     return (
         <div key={tutor._id} className='rounded-lg border border-slate-300 shadow shadow-slate-400'>
-            <Image src={tutor.image} alt={tutor.tutorName} height={200} width={200} className='w-full rounded-t-lg' />
+            <Image src={tutor?.image} alt={tutor?.tutorName} height={200} width={200} className='w-full rounded-t-lg' />
             <div className='p-6 space-y-2'>
                 <h2 className='text-[#0F172B] font-semibold text-xl'>{tutor.tutorName}</h2>
                 <p className='text-[#155DFC]'>{tutor.subject}</p>

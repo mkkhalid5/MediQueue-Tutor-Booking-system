@@ -1,11 +1,13 @@
 import { getTutors } from '@/lib/tutors';
 import { Button } from '@heroui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const AvailableTutor = async () => {
     const tutors = await getTutors();
-    console.log("tutor",tutors);
+    console.log("tutor", tutors);
+
     return (
         <div className='max-w-7xl mx-auto px-6 py-20'>
             <div className='text-center mb-12'>
@@ -21,16 +23,18 @@ const AvailableTutor = async () => {
                             <p className='text-[#155DFC]'>{tutor.subject}</p>
                             <hr />
                             <div className='flex justify-between'>
-                            <div>
-                                <p className='text-[#45556C]'>From</p>
-                                <p className='text-[#0F172B] font-bold'>${tutor.fee}/hr</p>
+                                <div>
+                                    <p className='text-[#45556C]'>From</p>
+                                    <p className='text-[#0F172B] font-bold'>${tutor.fee}/hr</p>
+                                </div>
+                                <p className='text-[#45556C]'>{parseInt(tutor.experience?.match(/\d+/)?.[0])}/years exp.</p>
+
                             </div>
-                            <p className='text-[#45556C]'>{parseInt(tutor.experience?.match(/\d+/)?.[0])}/years exp.</p>
-                            
+                            <Link href={`/tutors/${tutor._id}`}>
+                                <Button variant='outline' className={'rounded-lg w-full mt-2'}>Book Session</Button>
+                            </Link>
                         </div>
-                        <Button variant='outline' className={'rounded-lg w-full mt-2'}>Book Session</Button>
-                        </div>
-                        
+
                     </div>)
                 }
             </div>

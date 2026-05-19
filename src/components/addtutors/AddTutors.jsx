@@ -31,7 +31,7 @@ const AddTutors = () => {
             subject,
             available,
             fee,
-            slot,
+            slot: Number(slot),
             sessionDate,
             experience,
             location,
