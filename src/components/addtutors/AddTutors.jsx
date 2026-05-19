@@ -3,6 +3,7 @@ import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, ListBox, TextField, Select, Calendar, DatePicker, DateField } from '@heroui/react';
 import { getLocalTimeZone, today } from "@internationalized/date";
 import { use, useState } from "react";
+import toast from 'react-hot-toast';
 
 const AddTutors = () => {
     const [value, setValue] = useState(null);
@@ -50,29 +51,29 @@ const AddTutors = () => {
             const data = await res.json();
             console.log(data);
             if (res.ok) {
-                alert("Tutor added successfully");
+                toast.success("Tutor added successfully");
                 window.location.reload();
             }
             else {
-                alert("Failed to add tutor");
+                toast.error("Failed to add tutor");
             }
 
         }
         catch (error) {
             console.log(error);
-            alert("Something went wrong");
+            toast.error("Something went wrong");
         }
     }
 
 
     return (
-        <div className='p-1 py-10'>
-            <div className="w-max mx-auto">
-                <h2 className="text-center text-2xl font-semibold">Create Account</h2>
-                <p className="text-center text-[#6C696D] mb-6">Start your adventure with Wanderlust</p>
+        <div className='p-4 py-10 w-full'>
+            <div className="w-full max-w-3xl mx-auto">
+                <h2 className="text-center text-2xl font-semibold">Add Tutor</h2>
+                <p className="text-center text-[#6C696D] mb-6">create a new tutor profile</p>
 
                 <Card className="rounded-none border">
-                    <Form className=" grid md:grid-cols-2 gap-6 p-2.5 space-y-4" onSubmit={handleAddTutor} >
+                    <Form className="grid md:grid-cols-2 gap-10 p-2.5" onSubmit={handleAddTutor} >
                         <TextField
                             isRequired
                             name="name"
@@ -252,7 +253,7 @@ const AddTutors = () => {
                             </Select.Popover>
                             <FieldError />
                         </Select>
-                        <Button type="submit" className={'w-full rounded-sm bg-[#15A1BF] col-span-2'}>
+                        <Button type="submit" className={'w-full rounded-sm bg-[#15A1BF] md:col-span-2'}>
                             Add Tutor
                         </Button>
                     </Form>

@@ -1,6 +1,5 @@
 import MyBookedSession from "@/components/bookedSession/MyBookedSession";
 import { auth } from "@/lib/auth";
-import { authClient } from "@/lib/auth-client";
 import { bookedSession } from "@/lib/bookedSession";
 import { getSessionStatus } from "@/lib/sessionStatus";
 import { headers } from "next/headers";
@@ -33,11 +32,9 @@ const MyBookedSessionsPage = async () => {
                 : "Unknown",
         };
     });
-
     const upcomingCount = enrichedBookings.filter(
         (b) => b.status === "Upcoming"
     ).length;
-
     const expiredCount = enrichedBookings.filter(
         (b) => b.status === "Expired"
     ).length;
@@ -48,7 +45,7 @@ const MyBookedSessionsPage = async () => {
         <div className="container mx-auto px-4 py-8">
             <h2 className="text-[#0F172B] text-4xl font-bold">My Booked Sessions</h2>
             <p className="text-[#45556C]">Here you can view and manage your booked sessions.</p>
-            <div className="grid grid-cols-3 gap-8 mt-6">
+            <div className="grid md:grid-cols-3 gap-8 mt-6">
                 <div className="border shadow-md rounded-lg p-6">
                     <div className="flex items-center gap-1">
                         <CiCalendar className=" rounded-md bg-blue-200 text-blue-500 text-2xl font-bold" />

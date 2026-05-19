@@ -1,6 +1,7 @@
 'use client'
 import { AlertDialog, Button } from '@heroui/react';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { CiCalendarDate } from 'react-icons/ci';
 
 const MyBookedSession = ({ data }) => {
@@ -13,10 +14,12 @@ const MyBookedSession = ({ data }) => {
         });
         console.log('Delete session with ID:',_id);
         if(res.ok){
-            alert('Session deleted successfully');
+            toast('Session deleted successfully!',{
+                icon: '🚫',
+            });
             window.location.reload();
         } else {
-            alert('Failed to delete session');
+            toast.error('Failed to delete session');
         }
     };
     return (

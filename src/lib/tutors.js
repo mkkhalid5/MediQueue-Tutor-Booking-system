@@ -15,3 +15,10 @@ export const getTutorById = async (id) => {
         const data = await res.json();
         return data;
 }
+
+
+export const getTutorByUserEmail = async (email) => {
+        const res = await fetch(`http://localhost:5000/tutors/email/${email}`);
+        const data = await res.json();
+        return data;
+}

@@ -9,8 +9,8 @@ export const metadata = {
 const AddTutorsPage =  () => {
      
     return (
-        <div>
-            this is the Add Tutors page.
+        <div className="lg:container mx-auto p-6">
+            <h2 className="font-bold text-4xl">Add Tutor Page</h2>
             <AddTutors />
         </div>
     );

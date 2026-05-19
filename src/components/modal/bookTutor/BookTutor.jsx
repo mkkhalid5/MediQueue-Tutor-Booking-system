@@ -3,6 +3,7 @@ import { authClient } from '@/lib/auth-client';
 import { Button, Input, Label, Modal, Surface, TextField } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const BookTutor = ({ tutor }) => {
     const { data: session } = authClient.useSession();
@@ -35,17 +36,17 @@ const BookTutor = ({ tutor }) => {
             const data = await res.json();
             console.log(data);
             if (res.ok) {
-                alert("Session booked successfully");
+                toast.success("Session booked successfully");
                 router.push('/my-booked-sessions');
             }
             else {
-                alert("You have already booked this session or something went wrong");
+                toast.error("You have already booked this session or something went wrong");
             }
 
         }
         catch (error) {
             console.log(error);
-            alert("Something went wrong");
+            toast.error("Something went wrong");
         }
 
     }
