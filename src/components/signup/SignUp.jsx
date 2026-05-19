@@ -3,9 +3,13 @@ import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { redirect, useSearchParams, useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get('callbackUrl') || '/';
+    const router = useRouter();
 
     const handleSignUP = async (e) => {
         e.preventDefault();
@@ -19,14 +23,23 @@ const SignUp = () => {
             image: userData.image,
         });
 
+
+
         console.log("newUser", data);
         console.log("error", error);
         if (data) {
-            redirect('/')
+            toast.success("Account created successfully!");
+            router.push(callbackUrl);
         }
         if (error) {
-            alert(`status: ${error.status} statusText: ${error.statusText}`)
+            toast.error(`status: ${error.status} statusText: ${error.statusText}`);
         }
+    }
+
+   const handleGoogleSignin = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        })
     }
 
 
@@ -95,7 +108,7 @@ const SignUp = () => {
                         <div className="flex justify-center items-center gap-1">
                             <hr className="w-full" /> <p className="w-full text-[#6C696D]">Or sign up with</p> <hr className="w-full" />
                         </div>
-                        <div className="flex justify-center items-center gap-2 border py-2 cursor-pointer" >
+                        <div className="flex justify-center items-center gap-2 border py-2 cursor-pointer" onClick={handleGoogleSignin}>
                             <Image src={"https://www.gstatic.com/images/branding/searchlogo/ico/favicon.ico"} alt="google" width={20} height={20} />
                             <p>Sign Up With Google</p>
                         </div>

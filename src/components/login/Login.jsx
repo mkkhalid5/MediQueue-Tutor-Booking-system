@@ -5,6 +5,7 @@ import { router } from 'better-auth/api';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect, useSearchParams, useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
@@ -25,13 +26,19 @@ const Login = () => {
         console.log("newUser", data);
         console.log("error", error);
         if (data) {
+            toast.success("Logged in successfully!");
             router.push(callbackUrl);
         }
         if (error) {
-            alert(`status: ${error.status} statusText: ${error.statusText}`)
+            toast.error(`status: ${error.status} statusText: ${error.statusText}`);
         }
     }
 
+    const handleGoogleSignin = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        })
+    }
 
     return (
         <div className='p-1 py-10'>
@@ -75,7 +82,7 @@ const Login = () => {
                         <div className="flex justify-center items-center gap-1">
                             <hr className="w-full" /> <p className="w-full text-[#6C696D]">Or sign in with</p> <hr className="w-full" />
                         </div>
-                        <div className="flex justify-center items-center gap-2 border py-2 cursor-pointer" >
+                        <div className="flex justify-center items-center gap-2 border py-2 cursor-pointer" onClick={handleGoogleSignin}>
                             <Image src={"https://www.gstatic.com/images/branding/searchlogo/ico/favicon.ico"} alt="google" width={20} height={20} />
                             <p>Sign In With Google</p>
                         </div>
