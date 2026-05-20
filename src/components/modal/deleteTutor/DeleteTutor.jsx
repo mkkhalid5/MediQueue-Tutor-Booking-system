@@ -3,21 +3,21 @@ import { AlertDialog, Button } from '@heroui/react';
 import React from 'react';
 import toast from 'react-hot-toast';
 
-const DeleteTutor = ({tutor}) => {
+const DeleteTutor = ({ tutor }) => {
     const handleDelete = async () => {
-            const res = await fetch(`${process.env.API_URI}/tutors/${tutor?._id}`, {
-                method: 'DELETE'
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/tutors/${tutor?._id}`, {
+            method: 'DELETE',
+        });
+
+        if (res.ok) {
+            toast('Tutor deleted successfully!', {
+                icon: '🚫',
             });
-    
-            if(res.ok){
-                toast('Tutor deleted successfully!',{
-                    icon: '🚫',
-                });
-                window.location.reload();
-            } else {
-                toast.error('Failed to delete tutor');
-            }
-        };
+            window.location.reload();
+        } else {
+            toast.error('Failed to delete tutor');
+        }
+    };
     return (
         <AlertDialog>
             <Button className={'rounded-lg bg-red-200 text-red-500'} >

@@ -2,8 +2,7 @@
 import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, ListBox, TextField, Select, Calendar, DatePicker, DateField } from '@heroui/react';
 import { getLocalTimeZone, today } from "@internationalized/date";
-import { redirect } from 'next/navigation';
-import { use, useState } from "react";
+import { useState } from "react";
 import toast from 'react-hot-toast';
 
 const AddTutors = () => {
@@ -41,12 +40,11 @@ const AddTutors = () => {
         }
 
         try {
-            const {data:tokenData} = await authClient.token();
-            console.log('t',tokenData);
-            const res = await fetch(`${process.env.API_URI}/tutors`, {
+            const tokenData = await authClient.token();
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/tutors`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'content-type': 'application/json',
                     authorization: `Bearer ${tokenData?.token}`,
                 },
                 body: JSON.stringify(newTutorData)
@@ -55,7 +53,7 @@ const AddTutors = () => {
             console.log(data);
             if (res.ok) {
                 toast.success("Tutor added successfully");
-                redirect('/my-tutors');
+                window.location.reload();
             }
             else {
                 toast.error("Failed to add tutor");

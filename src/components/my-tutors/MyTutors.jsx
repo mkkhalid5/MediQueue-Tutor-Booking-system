@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import DeleteTutor from '../modal/deleteTutor/DeleteTutor';
 
 const MyTutors = ({ tutors }) => {
+    console.log('tt',tutors);
 
     return (
         <Table>

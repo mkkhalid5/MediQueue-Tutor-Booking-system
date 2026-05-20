@@ -10,6 +10,7 @@ const BookTutor = ({ tutor }) => {
     const user = session?.user;
     const router = useRouter();
     console.log(user);
+    console.log('tutor',tutor);
 
     const handleBooking = async (e) => {
         
@@ -18,6 +19,7 @@ const BookTutor = ({ tutor }) => {
         const bookingData = Object.fromEntries(formData.entries());
 
         const {_id, tutorName} = tutor;
+        console.log('id',_id);
         const newBooking = {
             studentId: user?.id,
             studentName: bookingData.name,
@@ -27,14 +29,14 @@ const BookTutor = ({ tutor }) => {
             tutorName
         }
         try {
-            const {data:tokenData} = await authClient.token();
-            const res = await fetch(`${process.env.API_URI}/bookings`, {
+            
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/bookings`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'authorization': `Bearer ${tokenData}`
+                    'content-type': 'application/json',
+                 
                 },
-                body: JSON.stringify(newBooking)
+                body: JSON.stringify(newBooking),
             });
             const data = await res.json();
             console.log(data);
@@ -45,7 +47,6 @@ const BookTutor = ({ tutor }) => {
             else {
                 toast.error("You have already booked this session or something went wrong");
             }
-
         }
         catch (error) {
             console.log(error);

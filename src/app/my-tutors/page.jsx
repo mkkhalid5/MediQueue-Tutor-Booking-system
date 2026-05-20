@@ -19,14 +19,14 @@ const MyTutorsPage = async () => {
         });
         const user = session?.user;
         console.log(user);
-    const tutors = await getTutorByUserEmail(user?.email,token);
+    const tutors = await getTutorByUserEmail(user?.email, token);
     return (
         <div className="container mx-auto px-4 py-8">
             <h2 className="text-[#0F172B] text-4xl font-bold">My Tutors</h2>
             <p className="text-[#45556C]">Manage your tutor profiles.</p>
 
             {
-            tutors.length === 0? (<div className="mt-8 p-8 container mx-auto flex justify-center items-center">
+            tutors.length === 0 ? (<div className="mt-8 p-8 container mx-auto flex justify-center items-center">
                         <div className="max-w-md w-full bg-white shadow-lg rounded-2xl p-8 text-center border">
 
                             <Image

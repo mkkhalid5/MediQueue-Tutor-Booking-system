@@ -7,13 +7,10 @@ export async function proxy(request) {
         headers: await headers()
     });
 
-    const currentPath = request.nextUrl.pathname;
     if (!session) {
-        const loginUrl = new URL("/auth/login", request.url);
-        loginUrl.searchParams.set("callbackUrl", currentPath);
-        return NextResponse.redirect(loginUrl);
+        return NextResponse.redirect(new URL('/auth/login', request.url))
     }
-    return NextResponse.next();
+    
 }
 export const config = {
     matcher: [
