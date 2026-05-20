@@ -1,24 +1,26 @@
 export const getTutors = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/tutorsAvailable`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/tutorsAvailable`, {
+                cache: "no-store",
+        });
         const data = await res.json();
         return data;
 };
 
 export const getAllTutors = async (search, startDate, endDate) => {
         console.log('search', search);
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URI}/tutors?search=${search}&startDate=${startDate}&endDate=${endDate}`,
-    {
-      cache: "no-store"
-    }
-  );
+        const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URI}/tutors?search=${search}&startDate=${startDate}&endDate=${endDate}`,
+                {
+                        cache: "no-store"
+                }
+        );
 
-  return res.json();
+        return res.json();
 };
 
-export const getTutorById = async (id,token) => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/tutors/${id}`,{
-                headers:{
+export const getTutorById = async (id, token) => {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/tutors/${id}`, {
+                headers: {
                         authorization: `Bearer ${token}`
                 }
         });
@@ -27,9 +29,9 @@ export const getTutorById = async (id,token) => {
 }
 
 
-export const getTutorByUserEmail = async (email,token) => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/tutors/email/${email}`,{
-                headers:{
+export const getTutorByUserEmail = async (email, token) => {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/tutors/email/${email}`, {
+                headers: {
                         authorization: `Bearer ${token}`
                 }
         });
