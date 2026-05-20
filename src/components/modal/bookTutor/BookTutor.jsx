@@ -29,12 +29,10 @@ const BookTutor = ({ tutor }) => {
             tutorName
         }
         try {
-            
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/bookings`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
-                 
                 },
                 body: JSON.stringify(newBooking),
             });
