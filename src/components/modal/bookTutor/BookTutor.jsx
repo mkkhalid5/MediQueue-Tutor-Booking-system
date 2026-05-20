@@ -12,6 +12,7 @@ const BookTutor = ({ tutor }) => {
     console.log(user);
 
     const handleBooking = async (e) => {
+        
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const bookingData = Object.fromEntries(formData.entries());
@@ -26,10 +27,12 @@ const BookTutor = ({ tutor }) => {
             tutorName
         }
         try {
-            const res = await fetch('http://localhost:5000/bookings', {
+            const {data:tokenData} = await authClient.token();
+            const res = await fetch(`${process.env.API_URI}/bookings`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${tokenData}`
                 },
                 body: JSON.stringify(newBooking)
             });

@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 const DeleteTutor = ({tutor}) => {
     const handleDelete = async () => {
-            const res = await fetch(`http://localhost:5000/tutors/${tutor?._id}`, {
+            const res = await fetch(`${process.env.API_URI}/tutors/${tutor?._id}`, {
                 method: 'DELETE'
             });
     

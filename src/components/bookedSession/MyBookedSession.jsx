@@ -9,7 +9,7 @@ const MyBookedSession = ({ data }) => {
     const { tutor,_id } = data;
     const price = parseInt(tutor?.fee);
     const handleDelete =async () => {
-        const res = await fetch(`http://localhost:5000/bookings/${_id}`, {
+        const res = await fetch(`${process.env.API_URI}/bookings/${_id}`, {
             method: 'DELETE'
         });
         console.log('Delete session with ID:',_id);

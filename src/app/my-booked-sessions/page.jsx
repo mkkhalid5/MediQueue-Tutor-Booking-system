@@ -14,11 +14,14 @@ export const metadata = {
 };
 
 const MyBookedSessionsPage = async () => {
+    const {token} = await auth.api.getToken({
+            headers: await headers(),
+        })
     const session = await auth.api.getSession({
         headers: await headers()
     });
     const userId = session?.user?.id;
-    const datas = await bookedSession(userId);
+    const datas = await bookedSession(userId,token);
     const bookings = datas?.bookings || [];
     const tutors = datas?.tutors || [];
     const enrichedBookings = bookings.map((b) => {
@@ -38,8 +41,6 @@ const MyBookedSessionsPage = async () => {
     const expiredCount = enrichedBookings.filter(
         (b) => b.status === "Expired"
     ).length;
-   
-
 
     return (
         <div className="container mx-auto px-4 py-8">

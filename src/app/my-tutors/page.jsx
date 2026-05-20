@@ -11,12 +11,15 @@ export const metadata = {
 };
 
 const MyTutorsPage = async () => {
+    const {token} = await auth.api.getToken({
+            headers: await headers(),
+        })
     const session = await auth.api.getSession({
             headers: await headers()
         });
         const user = session?.user;
         console.log(user);
-    const tutors = await getTutorByUserEmail(user?.email);
+    const tutors = await getTutorByUserEmail(user?.email,token);
     return (
         <div className="container mx-auto px-4 py-8">
             <h2 className="text-[#0F172B] text-4xl font-bold">My Tutors</h2>
@@ -40,7 +43,7 @@ const MyTutorsPage = async () => {
                                 You haven`t added any tutors yet.
                                 Add a tutor to your list.
                             </p>
-                            <Link href="/tutors">
+                            <Link href="/add-tutors">
                                 <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium transition">
                                     Add Tutor
                                 </button>

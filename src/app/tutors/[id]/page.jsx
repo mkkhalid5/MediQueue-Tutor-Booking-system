@@ -1,7 +1,9 @@
 
 import BookTutor from '@/components/modal/bookTutor/BookTutor';
+import { auth } from '@/lib/auth';
 import { getTutorById } from '@/lib/tutors';
 import { Button } from '@heroui/react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -20,8 +22,11 @@ export const metadata = {
 
 const TutorDetailsPage = async ({ params }) => {
     const { id } = await params;
-    console.log('id', id);
-    const tutor = await getTutorById(id);
+    const {token} = await auth.api.getToken({
+        headers: await headers(),
+    })
+  
+    const tutor = await getTutorById(id,token);
     return (
         <div className='max-w-7xl mx-auto px-6 py-10'>
             <div className='flex justify-between'>
