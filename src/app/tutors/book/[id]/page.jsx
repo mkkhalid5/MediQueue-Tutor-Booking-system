@@ -36,7 +36,7 @@ const TutorDetailsPage = async ({ params }) => {
             </div>
 
             <div className='p-4 rounded-lg shadow border border-slate-300 mt-6 flex flex-col md:flex-row items-center gap-8'>
-                <Image src={tutor?.image} alt={tutor?.name} width={300} height={300} />
+                <Image src={tutor?.image} alt={tutor?.name || 'Tutor Image'} width={300} height={300} />
                 <div className='space-y-2'>
                     <h2 className='text-3xl font-bold'>{tutor?.tutorName}</h2>
                     <p className='text-lg px-2 rounded-full bg-purple-200 text-purple-500 w-max'>{tutor?.subject}</p>
