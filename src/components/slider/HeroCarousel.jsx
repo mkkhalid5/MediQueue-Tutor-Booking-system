@@ -20,7 +20,8 @@ const HeroCarousel = () => {
       }}
       pagination={{ clickable: true }}
       loop={true}
-      className="rounded-3xl"
+      className="rounded-3xl "
+      
     >
       <SwiperSlide>
         <BannerOne />

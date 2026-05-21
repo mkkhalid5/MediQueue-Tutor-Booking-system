@@ -6,7 +6,7 @@ import HeroCarousel from "@/components/slider/HeroCarousel";
 export default function Home() {
   return (
     <div>
-      <div className="p-6">
+      <div className="p-2 md:p-6">
         <HeroCarousel></HeroCarousel>
       </div>
       <AvailableTutor></AvailableTutor>
