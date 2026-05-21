@@ -55,7 +55,7 @@ const BookTutor = ({ tutor }) => {
     }
     return (
         <Modal>
-            {tutor.slot === 0 ? <p p className={'rounded-lg'}>Tutor is not available</p> : <Button variant="outline" className={'rounded-lg'}>Book Tutor</Button>}
+            {tutor.slot === 0 ? <p p className={'rounded-lg'}>Tutor is not available</p> : <Button variant="outline" className={'rounded-lg bg-blue-500 text-white'}>Book Tutor</Button>}
             <Modal.Backdrop>
                 <Modal.Container placement="auto">
                     <Modal.Dialog className="sm:max-w-md">

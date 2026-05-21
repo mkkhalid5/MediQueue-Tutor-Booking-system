@@ -18,6 +18,6 @@ export const config = {
         "/my-tutors",
         "/my-booked-sessions",
         "/myprofile",
-        "/tutors/:path*"
+        "/tutors/book/:path*"
     ]
 };

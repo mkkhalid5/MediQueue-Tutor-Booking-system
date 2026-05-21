@@ -46,8 +46,7 @@ const TutorDetailsPage = async ({ params }) => {
                     <p className='flex items-center gap-2 text-slate-500'><CiLocationOn /> Location: {tutor?.location}</p>
                     <p className='flex items-center gap-2 text-slate-500'><TbDeviceDesktop /> Teaching Mode: <span className='text-lg px-2 rounded-full bg-purple-200 text-purple-500 w-max'>{tutor?.mode}</span></p>
                 </div>
-                <div className=' border p-4 shadow-lg rounded-md'>
-
+                <div className='ml-auto'>
                     <BookTutor tutor={tutor}></BookTutor>
                 </div>
             </div>
