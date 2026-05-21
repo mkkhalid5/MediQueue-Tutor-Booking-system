@@ -15,7 +15,7 @@ const TutorsPage = async ({ searchParams }) => {
   const searchValue = search?.search || '';
   const startDate = search?.startDate || '';
   const endDate = search?.endDate || '';
-  const tutors = await getAllTutors(searchValue, startDate, endDate);
+  const tutors = await getAllTutors(searchValue);
   return (
     <div className="lg:container mx-auto px-6 py-10">
       <div className='text-center'>

@@ -9,7 +9,6 @@ export const getSessionStatus = (sessionDate) => {
   if (session > today) {
     return "Upcoming";
   }
-
   if (session === today) {
     return "Running";
   }

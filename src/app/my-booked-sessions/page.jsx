@@ -14,33 +14,26 @@ export const metadata = {
 };
 
 const MyBookedSessionsPage = async () => {
-    const {token} = await auth.api.getToken({
-            headers: await headers(),
-        })
+    const { token } = await auth.api.getToken({
+        headers: await headers(),
+    })
     const session = await auth.api.getSession({
         headers: await headers()
     });
     const userId = session?.user?.id;
-    const datas = await bookedSession(userId,token);
+    const datas = await bookedSession(userId, token);
     const bookings = datas?.bookings || [];
+    console.log("bookings", bookings);
     const tutors = datas?.tutors || [];
-    const enrichedBookings = bookings.map((b) => {
-        const tutor = tutors.find((t) => t._id === b.tutorId);
 
-        return {
-            ...b,
-            tutor,
-            status: tutor?.sessionDate
-                ? getSessionStatus(tutor.sessionDate)
-                : "Unknown",
-        };
-    });
-    const upcomingCount = enrichedBookings.filter(
-        (b) => b.status === "Upcoming"
+    const upcomingCount = bookings.filter(
+        booking => booking.status === "upcoming"
     ).length;
-    const expiredCount = enrichedBookings.filter(
-        (b) => b.status === "Expired"
+
+    const completedCount = bookings.filter(
+        booking => booking.status === "completed"
     ).length;
+
 
     return (
         <div className="container mx-auto px-4 py-8">
@@ -58,7 +51,7 @@ const MyBookedSessionsPage = async () => {
                 <div className="border shadow-md rounded-lg p-6">
                     <div className="flex items-center gap-1">
                         <BiDollar className="rounded-md bg-green-200 text-green-500 text-2xl font-bold" />
-                        <p className="text-2xl text-[#0F172B] font-bold">{expiredCount}</p>
+                        <p className="text-2xl text-[#0F172B] font-bold">{completedCount}</p>
                     </div>
 
                     <p className="text-[#45556C]">Completed Sessions</p>

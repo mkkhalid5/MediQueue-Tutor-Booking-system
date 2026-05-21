@@ -65,10 +65,7 @@ const NavBar = () => {
                         <ActiveLink href={"/"}>Home</ActiveLink>
                     </li>
                     <li>
-                        {!isUser ? (
-                            <ActiveLink href={`/auth/login?callbackUrl=%2Ftutors`}>Tutors</ActiveLink>
-                        ) : <ActiveLink href={"/tutors"}>Tutors</ActiveLink>}
-                        
+                        <ActiveLink href={"/tutors"}>Tutors</ActiveLink>
                     </li>
                     <li>
                         {!isUser ? (

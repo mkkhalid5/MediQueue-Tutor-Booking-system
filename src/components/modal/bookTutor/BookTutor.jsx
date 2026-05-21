@@ -18,7 +18,7 @@ const BookTutor = ({ tutor }) => {
         const formData = new FormData(e.currentTarget);
         const bookingData = Object.fromEntries(formData.entries());
 
-        const {_id, tutorName} = tutor;
+        const {_id, tutorName, sessionDate} = tutor;
         console.log('id',_id);
         const newBooking = {
             studentId: user?.id,
@@ -26,7 +26,8 @@ const BookTutor = ({ tutor }) => {
             studentPhone: bookingData.phone,
             studentEmail: user?.email,
             tutorId: _id,
-            tutorName
+            tutorName,
+            sessionDate
         }
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/bookings`, {

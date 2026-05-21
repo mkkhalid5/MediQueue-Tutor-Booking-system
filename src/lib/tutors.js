@@ -14,7 +14,6 @@ export const getAllTutors = async (search) => {
                         cache: "no-store"
                 }
         );
-
         return res.json();
 };
 
