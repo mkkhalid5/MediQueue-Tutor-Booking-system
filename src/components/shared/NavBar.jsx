@@ -102,7 +102,7 @@ const NavBar = () => {
                                     </button>
                                 </div>
                             ) : (
-                                <div className="hidden items-center gap-4 md:flex dark:text-gray-200">
+                                <div className="hidden items-center gap-4 md:flex">
                                     <ActiveLink href={"/auth/login"}>Login</ActiveLink>
                                     <ActiveLink href={"/auth/signup"}>Sign Up</ActiveLink>
                                 </div>
