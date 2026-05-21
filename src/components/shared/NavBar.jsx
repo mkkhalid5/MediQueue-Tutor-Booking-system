@@ -6,13 +6,12 @@ import ActiveLink from "../activeLink/ActiveLink";
 import { authClient } from "@/lib/auth-client";
 import LoadingState from "../loading/LoadingState";
 import { redirect } from "next/navigation";
-import { Button } from "@heroui/react";
-import { useTheme } from "next-themes";
-import { ThemeSwitch } from "../ThemeSwitch";
+
+
 import { IoExitOutline } from "react-icons/io5";
 
 const NavBar = () => {
-    const { theme, setTheme } = useTheme();
+   
     const {
         data: session,
         isPending
