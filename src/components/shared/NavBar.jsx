@@ -6,8 +6,13 @@ import ActiveLink from "../activeLink/ActiveLink";
 import { authClient } from "@/lib/auth-client";
 import LoadingState from "../loading/LoadingState";
 import { redirect } from "next/navigation";
+import { Button } from "@heroui/react";
+import { useTheme } from "next-themes";
+import { ThemeSwitch } from "../ThemeSwitch";
+import { IoExitOutline } from "react-icons/io5";
 
 const NavBar = () => {
+    const { theme, setTheme } = useTheme();
     const {
         data: session,
         isPending
@@ -31,7 +36,7 @@ const NavBar = () => {
                         aria-label="Toggle menu"
                         aria-expanded={isMenuOpen}
                     >
-                        <span className="sr-only">Menu</span>
+                        <span className="sr-only  dark:text-gray-200">Menu</span>
                         <svg
                             className="h-6 w-6"
                             fill="none"
@@ -91,28 +96,29 @@ const NavBar = () => {
                             isUser ? (
                                 <div className=" items-center gap-4 flex">
                                     <ActiveLink href="/myprofile">
-                                        <Image alt="" height={40}  width={40} className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-300" src={isUser?.image || "https://source.unsplash.com/40x40/?portrait?1"} />
+                                        <Image alt="" height={40} width={40} className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-300" src={isUser?.image || "https://source.unsplash.com/40x40/?portrait?1"} />
                                     </ActiveLink>
-                                    <button onClick={handleLogout} className="text-sm font-medium text-primary hover:text-primary-hover">Logout</button>
+                                    <button onClick={handleLogout} className="hidden md:flex text-sm font-medium text-primary hover:text-primary-hover dark:text-gray-200 dark:hover:text-gray-300 justify-center items-center gap-1">
+                                        <IoExitOutline className="text-lg" /> Logout
+                                    </button>
                                 </div>
                             ) : (
-                                <div className="hidden items-center gap-4 md:flex">
+                                <div className="hidden items-center gap-4 md:flex dark:text-gray-200">
                                     <ActiveLink href={"/auth/login"}>Login</ActiveLink>
                                     <ActiveLink href={"/auth/signup"}>Sign Up</ActiveLink>
                                 </div>
                             )}
+
                 </div>
             </header>
             {isMenuOpen && (
                 <div className="border-t border-separator lg:hidden">
-                    <ul className="flex flex-col gap-2 p-4">
+                    <ul className="flex flex-col gap-2 p-4 ">
                         <li>
-                           <ActiveLink href={"/"}>Home</ActiveLink>
+                            <ActiveLink href={"/"}>Home</ActiveLink>
                         </li>
                         <li>
-                            {!isUser ? (
-                                <ActiveLink href={`/auth/login?callbackUrl=%2Ftutors`}>Tutors</ActiveLink>
-                            ) : <ActiveLink href={"/tutors"}>Tutors</ActiveLink>}
+                             <ActiveLink href={"/tutors"}>Tutors</ActiveLink>
                         </li>
                         <li>
                             {!isUser ? (
@@ -135,7 +141,7 @@ const NavBar = () => {
                             <ActiveLink href={"/auth/login"}>Login</ActiveLink>
                             <ActiveLink href={"/auth/signup"}>Sign Up</ActiveLink>
                         </div>
-                    ) : <button onClick={handleLogout} className="md:hidden text-sm font-medium text-primary hover:text-primary-hover">Logout</button>}
+                    ) : <button onClick={handleLogout} className="md:hidden text-sm font-medium text-primary hover:text-primary-hover flex ml-4 mb-2 justify-center items-center gap-1 dark:text-gray-200 dark:hover:text-gray-300"> <IoExitOutline /> Logout</button>}
                 </div>
             )}
         </nav>

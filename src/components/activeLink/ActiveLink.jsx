@@ -13,7 +13,7 @@ const ActiveLink = ({ href, children }) => {
             className={`
                 ${isActive
                     ? "text-blue-600 font-bold border-b-2 border-blue-600"
-                    : "text-black"
+                    : "text-black hover:text-blue-600 dark:text-gray-200 dark:hover:text-gray-300"
                 }
             `}
         >

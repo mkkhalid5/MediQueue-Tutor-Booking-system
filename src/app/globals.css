@@ -1,2 +1,20 @@
 @import "tailwindcss";
 @import "@heroui/styles"; 
+
+:root {
+  --accent: oklch(0.7 0.25 260);
+  --success: oklch(0.65 0.15 155);
+
+  --bg: #ffffff;
+  --text: #111111;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #ffffff;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}

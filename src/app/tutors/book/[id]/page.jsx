@@ -112,7 +112,7 @@ const TutorDetailsPage = async ({ params }) => {
                         </div>
                     </div>
                 </div>
-                <div className='bg-slate-200 p-2 shadow border border-slate-300 flex gap-2 items-center '>
+                <div className='bg-slate-200 p-2 shadow border border-slate-300 flex gap-2 items-center dark:bg-slate-700 dark:border-slate-600'>
                         <MdCalendarMonth />
                         <p>Session Start Date: </p>
                         <p className='font-bold'>{tutor?.sessionDate}</p>

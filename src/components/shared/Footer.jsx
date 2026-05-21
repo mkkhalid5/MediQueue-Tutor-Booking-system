@@ -2,6 +2,9 @@ import Image from 'next/image';
 import React from 'react';
 import Logo from '../../../public/assests/logo.png';
 import Link from 'next/link';
+import { FaFacebook, FaSquareXTwitter } from 'react-icons/fa6';
+import { FaInstagramSquare } from 'react-icons/fa';
+import { IoLogoYoutube } from 'react-icons/io5';
 
 const Footer = () => {
     return (
@@ -14,6 +17,13 @@ const Footer = () => {
                             <h2 className='font-bold'>MediQueue</h2>
                         </div>
                         <p className='text-[#90A1B9]'>Connecting students with expert tutors for personalized learning experiences.</p>
+
+                        <div className='flex gap-4 text-2xl text-[#90A1B9]'>
+                            <FaSquareXTwitter />
+                            <FaFacebook />
+                            <FaInstagramSquare />
+                            <IoLogoYoutube />
+                        </div>
                     </div>
 
                     <div className='space-y-4'>

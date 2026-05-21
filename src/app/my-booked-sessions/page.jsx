@@ -37,13 +37,13 @@ const MyBookedSessionsPage = async () => {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <h2 className="text-[#0F172B] text-4xl font-bold">My Booked Sessions</h2>
+            <h2 className="text-[#0F172B] dark:text-white text-4xl font-bold">My Booked Sessions</h2>
             <p className="text-[#45556C]">Here you can view and manage your booked sessions.</p>
             <div className="grid md:grid-cols-3 gap-8 mt-6">
                 <div className="border shadow-md rounded-lg p-6">
                     <div className="flex items-center gap-1">
                         <CiCalendar className=" rounded-md bg-blue-200 text-blue-500 text-2xl font-bold" />
-                        <p className="text-2xl text-[#0F172B] font-bold">{upcomingCount}</p>
+                        <p className="text-2xl text-[#0F172B] dark:text-white font-bold">{upcomingCount}</p>
                     </div>
 
                     <p className="text-[#45556C]">Upcoming Sessions</p>
@@ -51,7 +51,7 @@ const MyBookedSessionsPage = async () => {
                 <div className="border shadow-md rounded-lg p-6">
                     <div className="flex items-center gap-1">
                         <BiDollar className="rounded-md bg-green-200 text-green-500 text-2xl font-bold" />
-                        <p className="text-2xl text-[#0F172B] font-bold">{completedCount}</p>
+                        <p className="text-2xl text-[#0F172B] dark:text-white font-bold">{completedCount}</p>
                     </div>
 
                     <p className="text-[#45556C]">Completed Sessions</p>
@@ -59,7 +59,7 @@ const MyBookedSessionsPage = async () => {
                 <div className="border shadow-md rounded-lg p-6">
                     <div className="flex items-center gap-1">
                         <BiDollar className="rounded-md bg-cyan-200 text-cyan-500 text-2xl font-bold" />
-                        <p className="text-2xl text-[#0F172B] font-bold">{tutors.reduce((total, tutor) => total + parseInt(tutor?.fee), 0)}</p>
+                        <p className="text-2xl text-[#0F172B] dark:text-white font-bold">{tutors.reduce((total, tutor) => total + parseInt(tutor?.fee), 0)}</p>
                     </div>
 
                     <p className="text-[#45556C]">Total Spent</p>

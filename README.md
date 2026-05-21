@@ -1,38 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎓 MediQueue – Tutor Booking System
 
-## Getting Started
+**Live Site:** https://mediqueue.mkkhalid.top/
 
-//https://images.openai.com/static-rsc-4/rvRUN3AwOqtBNKJ53a3R7I5Zs4eParktP3qezLX-RX5vuNEi4o_HpFAaFauU4jdAc8ObyMpo4QeDUzoVupWEcP2b4AVzvT0UBknnJPiZSqVbouX1VurHYUCQ9GIj9EXqIDp6e26neIzkIh4nbEtNi6vvKdqeZb4Dv6_iVXm6OKKyG0rAuhS2r_eIsm2uSOwg?purpose=fullsize
+---
 
-First, run the development server:
+## 📌 Project Overview
+MediQueue is a modern tutor booking web application designed to simplify the process of finding, scheduling, and managing tutoring sessions. Students can explore tutors, book sessions based on availability, and manage their learning schedule efficiently with automated slot handling and secure authentication.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Key Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- 🔐 **Secure Authentication System**
+  - Email/password login and Google login using JWT-based authentication for protected routes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 👨‍🏫 **Tutor Management System**
+  - Users can add, and delete tutor profiles with detailed information like subject, experience, and availability.
 
-## Learn More
+- 📅 **Smart Booking System**
+  - Students can book sessions based on tutor availability with automatic slot reduction after successful booking.
 
-To learn more about Next.js, take a look at the following resources:
+- 🔎 **Search & Filter Functionality**
+  - Easily search tutors by name (case-insensitive) and filter them by available date ranges.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 📊 **Personal Dashboard**
+  - Users can view “My Tutors” and “My Booked Sessions” in organized table formats with update and cancel options.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 🌙 **Dark/Light Theme Support**
+  - Toggle between dark and light modes for a better user experience.
 
-## Deploy on Vercel
+- ⚠️ **Smart Validation & Error Handling**
+  - Prevents invalid password registration, overbooking, and invalid session booking with proper toast notifications.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Tech Stack
+- React / Next.js
+- Node.js / Express
+- MongoDB
+- JWT Authentication
+- Tailwind CSS
+- HeroUI / UI Components
+
+---
+
+## 📱 Responsive Design
+Fully responsive across mobile, tablet, and desktop devices with consistent UI/UX and reusable components.
+
+---
+
+## 📦 Deployment
+- Client: Vercel 
+- Server: Vercel
