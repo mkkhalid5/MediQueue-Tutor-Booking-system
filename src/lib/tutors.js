@@ -6,10 +6,10 @@ export const getTutors = async () => {
         return data;
 };
 
-export const getAllTutors = async (search, startDate, endDate) => {
+export const getAllTutors = async (search) => {
         console.log('search', search);
         const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URI}/tutors?search=${search}&startDate=${startDate}&endDate=${endDate}`,
+                `${process.env.NEXT_PUBLIC_API_URI}/tutors?search=${search}`,
                 {
                         cache: "no-store"
                 }
